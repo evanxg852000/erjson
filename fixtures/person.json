@@ -1,0 +1,11 @@
+{
+    "name": "Jarvis ",
+    "age": 34,
+    "friends": [ "jhon", "jane" ],
+    "happy": true,
+    "force": -10.03e-12,
+    "zero": 0,
+    "device": null,
+    "empty": "",
+    "escaped": "jhone\"s car"
+}
