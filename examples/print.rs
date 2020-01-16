@@ -1,7 +1,7 @@
-use erjson::{ JSONDocument, JSONValue, JSONError };
+use erjson::JSONDocument;
 
 fn main() {
-  let data = r#"{
+    let data = r#"{
     "name": "John Doe",
     "age": 43,
     "props": { "weight": 76, "height": 2.3 },
@@ -9,11 +9,10 @@ fn main() {
     "colors": [ "red", "blue" ]
   }"#;
 
-  let json = String::from(data);
-  let mut doc = JSONDocument::new();
-  match doc.parse_string(json) {
-    Ok(v) => println!("print: {}", v.to_string()),
-    Err(err) => print!("err: {}", err)
-  }
-
+    let json = String::from(data);
+    let mut doc = JSONDocument::new();
+    match doc.parse_string(json) {
+        Ok(v) => println!("print: {}", v.to_string()),
+        Err(err) => print!("err: {}", err),
+    }
 }

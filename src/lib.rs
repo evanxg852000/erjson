@@ -42,8 +42,8 @@ impl JSONDocument {
     pub fn to_string(&mut self) -> Result<String, JSONError> {
         match &self.value {
             Some(v) => Ok(v.to_string()),
-            None => Ok(String::from("null"))
-        } 
+            None => Ok(String::from("null")),
+        }
     }
 
     pub fn pretify(&mut self) -> String {

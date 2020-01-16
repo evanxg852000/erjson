@@ -157,28 +157,32 @@ impl<'a> Parser<'a> {
             TokenKind::Null => {
                 self.consume();
                 Ok(JSONValue::Null)
-            },
+            }
             TokenKind::False => {
                 self.consume();
                 Ok(JSONValue::Boolean(false))
-            },
+            }
             TokenKind::True => {
                 self.consume();
                 Ok(JSONValue::Boolean(true))
-            },
+            }
             TokenKind::String => {
                 let v = ct.value.clone();
                 self.consume();
                 Ok(JSONValue::String(v))
-            },
+            }
             TokenKind::Number => {
                 // TODO: distinct int, float
                 match ct.value.parse::<f64>() {
                     Ok(n) => {
                         self.consume();
                         Ok(JSONValue::Number(n))
-                    },
-                    Err(_) => Err(JSONError::new(format!("{} is NaN ", ct.value), ct.line, ct.col)),
+                    }
+                    Err(_) => Err(JSONError::new(
+                        format!("{} is NaN ", ct.value),
+                        ct.line,
+                        ct.col,
+                    )),
                 }
             }
             TokenKind::LeftBrace => self.parse_object(),
@@ -191,10 +195,10 @@ impl<'a> Parser<'a> {
                 ))
             }
         };
-        
+
         // if self.ct.kind != TokenKind::Eof {
         //     println!("after value consume {:?}", self.ct);
-        //     self.consume();    
+        //     self.consume();
         // }
         value
     }
